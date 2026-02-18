@@ -1,0 +1,51 @@
+name: Check Upstream Release
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # daily
+  workflow_dispatch:
+
+jobs:
+  check-and-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for updates and modify spec
+        run: |
+          UPSTREAM_REPO="4v3ngR/kwin-effects-glass"
+          SPEC_FILE="kwin-effects-glass.spec"
+
+          # Get latest release tag from GitHub API
+          LATEST_TAG=$(curl -sL "https://api.github.com/repos/$UPSTREAM_REPO/releases/latest" | jq -r ".tag_name")
+
+          # Remove 'v' prefix
+          NEW_VER=${LATEST_TAG#v}
+
+          # Get current version from local spec file
+          CURRENT_VER=$(grep "^Version:" "$SPEC_FILE" | awk '{print $2}')
+
+          echo "Upstream version: $NEW_VER"
+          echo "Current spec version: $CURRENT_VER"
+
+          # Compare and update
+          if [ "$NEW_VER" != "$CURRENT_VER" ]; then
+            echo "New version found! Updating spec file..."
+
+            # Replace the "Version:" line
+            sed -i "s/^Version:.*/Version: $NEW_VER/" "$SPEC_FILE"
+
+            # Commit and push changes
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+
+            git add "$SPEC_FILE"
+            git commit -m "Update the spec version to match upstream ($NEW_VER)"
+            git push
+          else
+            echo "Versions match. No update needed."
+          fi
