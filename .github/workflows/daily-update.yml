@@ -55,6 +55,9 @@ jobs:
             
             # Replace "Source0:" line
             sed -i "s|^Source0:.*|Source0: %{url}/archive/$LATEST_TAG.tar.gz|" "$SPEC_FILE"
+            
+            # Replace the "%autosetup" line
+            sed -i "s|^%autosetup.*|%autosetup -n kwin-effects-glass-$LATEST_TAG|" "$SPEC_FILE"
 
             # Commit and push changes
             git config user.name "github-actions[bot]"
