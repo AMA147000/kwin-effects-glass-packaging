@@ -1,5 +1,5 @@
 Name: kwin-effects-glass
-Version: 1.6.4
+Version: 6.6.0
 Release: 1%{?dist}
 Summary: Glass blur effect for KWin
 
