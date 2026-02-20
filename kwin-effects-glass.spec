@@ -1,4 +1,4 @@
-# Tag: 6.6.0-1-test
+# Tag: 6.6.0-1
 Name: kwin-effects-glass
 Version: 6.6.0
 Release: 1%{?dist}
@@ -32,7 +32,7 @@ Requires: kwin
 Fork of the Plasma 6 blur effect with additional features (including force blur) and bug fixes.
 
 %prep
-%autosetup -n kwin-effects-glass-%{version}
+%autosetup -n kwin-effects-glass-6.6.0-1
 
 %build
 %cmake
