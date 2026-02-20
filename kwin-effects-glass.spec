@@ -1,4 +1,4 @@
-# Tag: 6.6.0
+# Tag: 6.6.0-1
 Name: kwin-effects-glass
 Version: 6.6.0
 Release: 1%{?dist}
@@ -6,7 +6,7 @@ Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
 URL: https://github.com/4v3ngR/kwin-effects-glass
-Source0: %{url}/archive/%{version}.tar.gz
+Source0: %{url}/archive/6.6.0-1.tar.gz
 
 BuildRequires: extra-cmake-modules
 BuildRequires: gcc-c++
