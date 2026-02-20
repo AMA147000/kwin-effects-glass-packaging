@@ -1,7 +1,7 @@
 # Tag: 6.6.0-1
 Name: kwin-effects-glass
 Version: 6.6.0
-Release: 1%{?dist}
+Release: 1.1%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
