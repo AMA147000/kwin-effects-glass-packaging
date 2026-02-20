@@ -24,7 +24,7 @@ jobs:
           LATEST_TAG=$(curl -sL "https://api.github.com/repos/$UPSTREAM_REPO/releases/latest" | jq -r ".tag_name")
 
           # Get current tag from local spec file
-          CURRENT_TAG=$(grep "^# Tag:" "$SPEC_FILE" | awk '{print $2}')
+          CURRENT_TAG=$(grep "^# Tag:" "$SPEC_FILE" | awk '{print $3}')
 
           echo "Upstream tag: $LATEST_TAG"
           echo "Current spec tag: $CURRENT_TAG"
