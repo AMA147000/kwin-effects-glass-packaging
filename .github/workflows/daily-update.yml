@@ -23,29 +23,46 @@ jobs:
           # Get latest release tag from GitHub API
           LATEST_TAG=$(curl -sL "https://api.github.com/repos/$UPSTREAM_REPO/releases/latest" | jq -r ".tag_name")
 
-          # Remove 'v' prefix
-          NEW_VER=${LATEST_TAG#v}
+          # Get current tag from local spec file
+          CURRENT_TAG=$(grep "^# Tag:" "$SPEC_FILE" | awk '{print $2}')
 
-          # Get current version from local spec file
-          CURRENT_VER=$(grep "^Version:" "$SPEC_FILE" | awk '{print $2}')
-
-          echo "Upstream version: $NEW_VER"
-          echo "Current spec version: $CURRENT_VER"
+          echo "Upstream tag: $LATEST_TAG"
+          echo "Current spec tag: $CURRENT_TAG"
 
           # Compare and update
-          if [ "$NEW_VER" != "$CURRENT_VER" ]; then
-            echo "New version found! Updating spec file..."
+          if [ "$LATEST_TAG" != "$CURRENT_TAG" ]; then
+            echo "New tag found! Updating spec file..."
+        
+            # Get version number (remove 'v' prefix and "-*")
+            NEW_VER=${LATEST_TAG#v}
+            NEW_VER=${NEW_VER%%-*}
+            
+            # Get release (get everything after '-')
+            NEW_REL=${LATEST_TAG#*-}
+            # Use 0 if there’s nothing after the dash
+            if [ "$NEW_REL" = "$LATEST_TAG" ]; then
+                NEW_REL=0
+            fi
+            
+            # Replace the "# Tag:" line
+            sed -i "s|^# Tag:.*|# Tag: $LATEST_TAG|" "$SPEC_FILE"
 
             # Replace the "Version:" line
-            sed -i "s/^Version:.*/Version: $NEW_VER/" "$SPEC_FILE"
+            sed -i "s|^Version:.*|Version: $NEW_VER|" "$SPEC_FILE"
+            
+            # Replace the "Release:" line
+            sed -i "s|^Release:.*|Release: $NEW_REL%{?dist}|" "$SPEC_FILE"
+            
+            # Replace "Source0:" line
+            sed -i "s|^Source0:.*|Source0: %{url}/archive/$LATEST_TAG.tar.gz|" "$SPEC_FILE"
 
             # Commit and push changes
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
 
             git add "$SPEC_FILE"
-            git commit -m "Update the spec version to match upstream ($NEW_VER)"
+            git commit -m "Update the spec file to match upstream ($LATEST_TAG)"
             git push
           else
-            echo "Versions match. No update needed."
+            echo "Tags match. No update needed."
           fi
