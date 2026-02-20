@@ -5,7 +5,7 @@ Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
 URL: https://github.com/4v3ngR/kwin-effects-glass
-Source0: %{url}/archive/v%{version}.tar.gz
+Source0: %{url}/archive/%{version}.tar.gz
 
 BuildRequires: extra-cmake-modules
 BuildRequires: gcc-c++
