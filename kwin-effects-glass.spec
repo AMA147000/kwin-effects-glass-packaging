@@ -1,4 +1,4 @@
-# Tag: 6.6.0-2
+# Tag: 6.6.0-1
 Name: kwin-effects-glass
 Version: 6.6.0
 Release: 2%{?dist}
