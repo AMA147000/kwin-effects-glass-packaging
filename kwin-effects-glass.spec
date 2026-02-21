@@ -1,4 +1,4 @@
-# Tag: 6.6.0-1
+# Tag: 6.6.0-2
 Name: kwin-effects-glass
 Version: 6.6.0
 Release: 2%{?dist}
@@ -51,4 +51,11 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %{_libdir}/qt6/plugins/kwin/effects/plugins/*.so
 
 %changelog
+* Sat Feb 21 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 6.6.0-2
+- ensure edge size is <= min half size
+- Merge pull request #23 from 4v3ngR/limit_refraction_edge_size
+- offset the output by the device origin
+- Merge pull request #25 from 4v3ngR/fix_multi_monitor_setups
+- hotfix: only apply 'new' device offset translation on 6.6.0
+
 %autochangelog
