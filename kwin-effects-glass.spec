@@ -57,5 +57,3 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 - offset the output by the device origin
 - Merge pull request #25 from 4v3ngR/fix_multi_monitor_setups
 - hotfix: only apply 'new' device offset translation on 6.6.0
-
-%autochangelog
