@@ -1,12 +1,12 @@
-# Tag: 6.6.0-2
+# Tag: 6.6.0-3
 Name: kwin-effects-glass
 Version: 6.6.0
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
 URL: https://github.com/4v3ngR/kwin-effects-glass
-Source0: %{url}/archive/6.6.0-2.tar.gz
+Source0: %{url}/archive/6.6.0-3.tar.gz
 
 BuildRequires: extra-cmake-modules
 BuildRequires: gcc-c++
@@ -32,7 +32,7 @@ Requires: kwin
 Fork of the Plasma 6 blur effect with additional features (including force blur) and bug fixes.
 
 %prep
-%autosetup -n kwin-effects-glass-6.6.0-2
+%autosetup -n kwin-effects-glass-6.6.0-3
 
 %build
 %cmake
@@ -51,6 +51,15 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %{_libdir}/qt6/plugins/kwin/effects/plugins/*.so
 
 %changelog
+* Wed Feb 25 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 6.6.0-3
+- add dock comparisons
+- update shaders to have improved AA
+- remove AA setting
+- remove 'window opacity affects blur' setting
+- improve shaders for antialias
+- Merge pull request #29 from 4v3ngR/fix-antialiased_edges
+- hotfix: need to include opacity
+
 * Sat Feb 21 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 6.6.0-2
 - ensure edge size is <= min half size
 - Merge pull request #23 from 4v3ngR/limit_refraction_edge_size
