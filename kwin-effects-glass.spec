@@ -1,12 +1,12 @@
-# Tag: 6.6.1-2
+# Tag: 6.6.1-3
 Name: kwin-effects-glass
 Version: 6.6.1
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
 URL: https://github.com/4v3ngR/kwin-effects-glass
-Source0: %{url}/archive/6.6.1-2.tar.gz
+Source0: %{url}/archive/6.6.1-3.tar.gz
 
 BuildRequires: extra-cmake-modules
 BuildRequires: gcc-c++
@@ -32,7 +32,7 @@ Requires: kwin
 Fork of the Plasma 6 blur effect with additional features (including force blur) and bug fixes.
 
 %prep
-%autosetup -n kwin-effects-glass-6.6.1-2
+%autosetup -n kwin-effects-glass-6.6.1-3
 
 %build
 %cmake
@@ -51,6 +51,12 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %{_libdir}/qt6/plugins/kwin/effects/plugins/*.so
 
 %changelog
+* Thu Mar 05 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 6.6.1-3
+- Update README.md
+- Merge pull request #34 from vickoc911/main
+- add option to exclude docks from tinting
+- Merge pull request #35 from 4v3ngR/notint-docks
+
 * Fri Feb 27 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 6.6.1-2
 - adjust projection maxtrix for static blur to handle scaled multi display configurations
 
