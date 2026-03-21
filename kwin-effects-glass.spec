@@ -1,12 +1,12 @@
-# Tag: 6.6.1-3
+# Tag: 6.6.2-3
 Name: kwin-effects-glass
-Version: 6.6.1
+Version: 6.6.2
 Release: 3%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
 URL: https://github.com/4v3ngR/kwin-effects-glass
-Source0: %{url}/archive/6.6.1-3.tar.gz
+Source0: %{url}/archive/6.6.2-3.tar.gz
 
 BuildRequires: extra-cmake-modules
 BuildRequires: gcc-c++
@@ -32,7 +32,7 @@ Requires: kwin
 Fork of the Plasma 6 blur effect with additional features (including force blur) and bug fixes.
 
 %prep
-%autosetup -n kwin-effects-glass-6.6.1-3
+%autosetup -n kwin-effects-glass-6.6.2-3
 
 %build
 %cmake
@@ -51,6 +51,30 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %{_libdir}/qt6/plugins/kwin/effects/plugins/*.so
 
 %changelog
+* Sat Mar 21 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 6.6.2-3
+- update README
+- rewritten using new blur plugin source code as reference
+- reimplement the blacklist/whitelist that was present in the old version
+- Update README.md
+- Update README.md
+- update README and disable X11 builds by default
+- deleted
+- fixups for floating docks (and maybe menus)
+- update frag
+- ignore window opacity
+- completely ignore window transparency
+- need this for fading out menus
+- set a minmum minBlurSize to reduce skewing
+- some magic numbers, I might make them configuratble one day
+- some more shader updates
+- some more shader updates
+- Update README.md
+- some corner cleanups
+- Merge branch 'main' of ssh://github.com/4v3ngR/kwin-effects-glass
+- updated readme
+- remove m_allWindows and include a hack for a bug
+- rewrite prePaintWindow to remove the need for several hacks
+
 * Thu Mar 05 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 6.6.1-3
 - Update README.md
 - Merge pull request #34 from vickoc911/main
