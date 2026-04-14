@@ -1,12 +1,12 @@
-# Tag: 6.6.3-1
+# Tag: 6.6.3-2
 Name: kwin-effects-glass
 Version: 6.6.3
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
 URL: https://github.com/4v3ngR/kwin-effects-glass
-Source0: %{url}/archive/6.6.3-1.tar.gz
+Source0: %{url}/archive/6.6.3-2.tar.gz
 
 BuildRequires: extra-cmake-modules
 BuildRequires: gcc-c++
@@ -32,7 +32,7 @@ Requires: kwin
 Fork of the Plasma 6 blur effect with additional features (including force blur) and bug fixes.
 
 %prep
-%autosetup -n kwin-effects-glass-6.6.3-1
+%autosetup -n kwin-effects-glass-6.6.3-2
 
 %build
 %cmake
@@ -51,6 +51,25 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %{_libdir}/qt6/plugins/kwin/effects/plugins/*.so
 
 %changelog
+* Tue Apr 14 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 6.6.3-2
+- chore: add /build to .gitignore
+- Merge branch '4v3ngR:main' into main
+- Refactor blur effect and shader files for improved performance and organization
+- fix: bring back corner radius handling for on-screen displays and tooltips
+- Merge pull request #57 from PKMNPlatin/cleanup/shader-generation
+- edge effect
+- edge lighting and shadow - pt1
+- slight tweaks
+- thinner
+- wrap in glowStrength check
+- fix if statement
+- change the light reflection
+- we should only apply the blur if we're within the rounded rect
+- don't apply glow to docks if the radius is too big for the dock
+- don't have edge lighting on small docks
+- fix: keep compatibility with X11 (Xlibre) and KDE 6.6
+- Merge pull request #60 from xlab/fix/x11-xlibre-build-6.6
+
 * Wed Apr 01 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 6.6.3-1
 - simplify shaders
 - fix window corners
