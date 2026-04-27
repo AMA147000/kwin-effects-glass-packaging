@@ -1,12 +1,12 @@
-# Tag: 6.6.3-2
+# Tag: 6.6.4-1
 Name: kwin-effects-glass
-Version: 6.6.3
-Release: 2%{?dist}
+Version: 6.6.4
+Release: 1%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
 URL: https://github.com/4v3ngR/kwin-effects-glass
-Source0: %{url}/archive/6.6.3-2.tar.gz
+Source0: %{url}/archive/6.6.4-1.tar.gz
 
 BuildRequires: extra-cmake-modules
 BuildRequires: gcc-c++
@@ -32,7 +32,7 @@ Requires: kwin
 Fork of the Plasma 6 blur effect with additional features (including force blur) and bug fixes.
 
 %prep
-%autosetup -n kwin-effects-glass-6.6.3-2
+%autosetup -n kwin-effects-glass-6.6.4-1
 
 %build
 %cmake
@@ -51,6 +51,16 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %{_libdir}/qt6/plugins/kwin/effects/plugins/*.so
 
 %changelog
+* Mon Apr 27 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 6.6.4-1
+- Option to disable edge brighter in panels and tooltips
+- Option to disable edge brighter in panels and tooltips
+- Merge pull request #62 from vickoc911/disable_brighter_dock
+- window corner radius will change when corner is touching the edge of another window
+- only consider current activity
+- fix blur artifacts on 6.4.4
+- need the prePaintWindow functions even for 6.4.4
+- Update README.md
+
 * Tue Apr 14 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 6.6.3-2
 - chore: add /build to .gitignore
 - Merge branch '4v3ngR:main' into main
