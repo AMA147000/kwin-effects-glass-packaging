@@ -13,6 +13,7 @@ BuildRequires: gcc-c++
 BuildRequires: kf6-kwindowsystem-devel
 BuildRequires: qt6-qtbase-devel
 BuildRequires: kwin-devel
+BuildRequires: libplasma-devel
 BuildRequires: kf6-knotifications-devel
 BuildRequires: kf6-kio-devel
 BuildRequires: kf6-kcrash-devel
