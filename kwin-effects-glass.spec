@@ -1,7 +1,7 @@
-# Tag: 6.6.4-1
+# Tag: 6.6.4-1.1
 Name: kwin-effects-glass
 Version: 6.6.4
-Release: 1%{?dist}
+Release: 1.1%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
@@ -52,6 +52,9 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %{_libdir}/qt6/plugins/kwin/effects/plugins/*.so
 
 %changelog
+* Sun May 24 2026 AMA147000 - 6.6.4-1.1
+- Manual update to build for plasma 6.6.5
+
 * Mon Apr 27 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 6.6.4-1
 - Option to disable edge brighter in panels and tooltips
 - Option to disable edge brighter in panels and tooltips
