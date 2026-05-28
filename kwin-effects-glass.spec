@@ -45,9 +45,9 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %install
 %cmake_install
 
-%find_lang %{name}
+%find_lang kwin_effects_glass
 
-%files -f %{name}.lang
+%files -f kwin_effects_glass.lang
 %license LICENSE
 %doc README.md
 %{_libdir}/qt6/plugins/kwin/effects/configs/*.so
