@@ -1,12 +1,12 @@
-# Tag: 6.6.4-1
+# Tag: 20260527-01
 Name: kwin-effects-glass
-Version: 6.6.4
-Release: 1.1%{?dist}
+Version: 20260527
+Release: 01%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
 URL: https://github.com/4v3ngR/kwin-effects-glass
-Source0: %{url}/archive/6.6.4-1.tar.gz
+Source0: %{url}/archive/20260527-01.tar.gz
 
 BuildRequires: extra-cmake-modules
 BuildRequires: gcc-c++
@@ -33,7 +33,7 @@ Requires: kwin
 Fork of the Plasma 6 blur effect with additional features (including force blur) and bug fixes.
 
 %prep
-%autosetup -n kwin-effects-glass-6.6.4-1
+%autosetup -n kwin-effects-glass-20260527-01
 
 %build
 %cmake
@@ -52,6 +52,16 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %{_libdir}/qt6/plugins/kwin/effects/plugins/*.so
 
 %changelog
+* Thu May 28 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 20260527-01
+- improve corner refraction
+- Merge branch 'main' of github.com:4v3ngR/kwin-effects-glass
+- Added localization support as well as french translation.
+- Removed a bunch of unused dependencies
+- Added translation references and author
+- Merge pull request #69 from RubisetCie/french-translation
+- hardcode spactacle to the exclusion list
+- add xwaylandvideobridge to blacklist
+
 * Sun May 24 2026 AMA147000 - 6.6.4-1.1
 - Manual update to build for plasma 6.6.5
 
