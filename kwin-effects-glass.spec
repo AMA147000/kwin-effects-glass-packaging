@@ -1,12 +1,12 @@
-# Tag: 20260527-01
+# Tag: 20260531-01
 Name: kwin-effects-glass
-Version: 20260527
+Version: 20260531
 Release: 01%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
 URL: https://github.com/4v3ngR/kwin-effects-glass
-Source0: %{url}/archive/20260527-01.tar.gz
+Source0: %{url}/archive/20260531-01.tar.gz
 
 BuildRequires: extra-cmake-modules
 BuildRequires: gcc-c++
@@ -33,7 +33,7 @@ Requires: kwin
 Fork of the Plasma 6 blur effect with additional features (including force blur) and bug fixes.
 
 %prep
-%autosetup -n kwin-effects-glass-20260527-01
+%autosetup -n kwin-effects-glass-20260531-01
 
 %build
 %cmake
@@ -54,6 +54,13 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %{_libdir}/qt6/plugins/kwin/effects/plugins/*.so
 
 %changelog
+* Sun May 31 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 20260531-01
+- explicitly set window border radius
+- add option to apply blur to contents only
+- don't consider contentShape
+- fix up frame blur exclusion when there's no content region
+- Update blur settings. Now content and decoration can have different blur and noise levels
+
 * Thu May 28 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 20260527-01
 - improve corner refraction
 - Merge branch 'main' of github.com:4v3ngR/kwin-effects-glass
