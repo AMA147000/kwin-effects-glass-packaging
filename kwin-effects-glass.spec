@@ -1,12 +1,12 @@
-# Tag: 20260531-01
+# Tag: 20260602-01
 Name: kwin-effects-glass
-Version: 20260531
+Version: 20260602
 Release: 01%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
 URL: https://github.com/4v3ngR/kwin-effects-glass
-Source0: %{url}/archive/20260531-01.tar.gz
+Source0: %{url}/archive/20260602-01.tar.gz
 
 BuildRequires: extra-cmake-modules
 BuildRequires: gcc-c++
@@ -33,7 +33,7 @@ Requires: kwin
 Fork of the Plasma 6 blur effect with additional features (including force blur) and bug fixes.
 
 %prep
-%autosetup -n kwin-effects-glass-20260531-01
+%autosetup -n kwin-effects-glass-20260602-01
 
 %build
 %cmake
@@ -54,6 +54,13 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %{_libdir}/qt6/plugins/kwin/effects/plugins/*.so
 
 %changelog
+* Wed Jun 03 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 20260602-01
+- feature: prepare toggleable physically based (snells law) refraction shader branch
+- feature: implemented physically based refraction + new uniform slider especially for the physical-based toggle
+- Merge pull request #75 from PKMNPlatin/feature/physically-based-refraction
+- fix maximized rounded corners setting
+- fixups for dynamic corners
+
 * Sun May 31 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 20260531-01
 - explicitly set window border radius
 - add option to apply blur to contents only
