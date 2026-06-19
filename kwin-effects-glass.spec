@@ -1,12 +1,12 @@
-# Tag: 20260602-01
+# Tag: 20260619-1
 Name: kwin-effects-glass
-Version: 20260602
-Release: 01%{?dist}
+Version: 20260619
+Release: 1%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
 URL: https://github.com/4v3ngR/kwin-effects-glass
-Source0: %{url}/archive/20260602-01.tar.gz
+Source0: %{url}/archive/20260619-1.tar.gz
 
 BuildRequires: extra-cmake-modules
 BuildRequires: gcc-c++
@@ -33,7 +33,7 @@ Requires: kwin
 Fork of the Plasma 6 blur effect with additional features (including force blur) and bug fixes.
 
 %prep
-%autosetup -n kwin-effects-glass-20260602-01
+%autosetup -n kwin-effects-glass-20260619-1
 
 %build
 %cmake
@@ -54,6 +54,42 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %{_libdir}/qt6/plugins/kwin/effects/plugins/*.so
 
 %changelog
+* Fri Jun 19 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 20260619-1
+- more customisation settings
+- more settings
+- add config to exclude tinting from decorations
+- allow tooltip tint exclusion
+- rounded content corners
+- add option to ignore application provided blur regions
+- updated README
+- calculate rounded content region radius based on window decoration width
+- remove broken optimization for when blur/noise settings are the same
+- feat(blur): add finetune slider that scales sample offsets
+- feat(blur): match downsample/upsample kernels for smoother dual-Kawase blur
+- tweak: bump BlurFinetune
+- feat(blur): saturation compensation - keep vibrant colors at highter blur radii
+- tweak: saturation boost and weighting
+- Merge pull request #78 from PKMNPlatin/feature/blur-finetune
+- chore: made blur color compensation toggelable since it can cause artifacts
+- fix(snells-glass): smooth corners for non-rounded windows
+- chore: extract glass refraction + outline into functions, add GlassFragment so the outline can vary per algorithm
+- feat(glass): Snell's lens slope follows refractionNormalPow to match the shape settings better
+- feat(blur): apply saturation in OKLab option
+- Merge pull request #80 from PKMNPlatin/feature/blur-finetune
+- Merge pull request #81 from PKMNPlatin/feature/physically-based-refraction
+- fix(oklab): clamp srgb input
+- Merge pull request #82 from PKMNPlatin/feature/oklab-color-space
+- feat(refraction): add bevel intensity slider for snells path
+- fix(refraction): fixed normals
+- Merge pull request #85 from PKMNPlatin/feature/physically-based-refraction
+- only round the contents blur corner if the window has a visible decoration
+- change highlight to match the new liquid glass widgets
+- fix: support KWin 6.7 effect API
+- fix: tighten KWin 6.7 blur fallback
+- fix: keep Wayland blur geometry global
+- Merge pull request #87 from avitretiak/fix/kwin-6-7-compat
+- Update README.md
+
 * Wed Jun 03 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 20260602-01
 - feature: prepare toggleable physically based (snells law) refraction shader branch
 - feature: implemented physically based refraction + new uniform slider especially for the physical-based toggle
