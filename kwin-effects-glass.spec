@@ -1,12 +1,12 @@
-# Tag: 20260619-1
+# Tag: 20260620-1
 Name: kwin-effects-glass
-Version: 20260619
+Version: 20260620
 Release: 1%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
 URL: https://github.com/4v3ngR/kwin-effects-glass
-Source0: %{url}/archive/20260619-1.tar.gz
+Source0: %{url}/archive/20260620-1.tar.gz
 
 BuildRequires: extra-cmake-modules
 BuildRequires: gcc-c++
@@ -33,7 +33,7 @@ Requires: kwin
 Fork of the Plasma 6 blur effect with additional features (including force blur) and bug fixes.
 
 %prep
-%autosetup -n kwin-effects-glass-20260619-1
+%autosetup -n kwin-effects-glass-20260620-1
 
 %build
 %cmake
@@ -54,6 +54,12 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %{_libdir}/qt6/plugins/kwin/effects/plugins/*.so
 
 %changelog
+* Sat Jun 20 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 20260620-1
+- don't ignore all spectacle windows
+- Merge branch 'main' of github.com:4v3ngR/kwin-effects-glass
+- fix effect for floating docks
+- load core shaders - this may break for legacy systems
+
 * Fri Jun 19 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 20260619-1
 - more customisation settings
 - more settings
