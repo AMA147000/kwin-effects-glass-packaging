@@ -5,7 +5,6 @@ Note:
 - This is ***not*** a nightly build, meaning it only updates on releases.
 
 Supported versions (aarch64 and x86_64):
-- Fedora 42
 - Fedora 43
 - Fedora 44
 - Fedora rawhide
