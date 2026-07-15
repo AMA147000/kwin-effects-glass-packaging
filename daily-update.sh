@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -euo pipefail
 
 UPSTREAM_REPO="4v3ngR/kwin-effects-glass"
