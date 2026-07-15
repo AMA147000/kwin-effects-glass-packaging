@@ -9,8 +9,8 @@ EMAIL="github-actions[bot]@users.noreply.github.com"
 
 # Get latest release tag from GitHub API
 LATEST_TAG=$(curl -sL "https://api.github.com/repos/$UPSTREAM_REPO/releases/latest" | jq -r ".tag_name")
-# Get latest plasma version from GitHub API
-LATEST_PLASMA=$(curl -sL "https://api.github.com/repos/KDE/libplasma/tags" | jq -r ".[0].name")
+# Get latest plasma version from Fedora Rawhide
+LATEST_PLASMA=$(curl -sL "https://mdapi.fedoraproject.org/rawhide/pkg/libplasma" | jq -r '.version')
 
 # Get current tag from local spec file
 CURRENT_TAG=$(grep "^# Tag:" "$SPEC_FILE" | awk '{print $3}')

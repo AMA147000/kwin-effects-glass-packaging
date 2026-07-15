@@ -1,5 +1,5 @@
 # Tag: 20260620-1
-# Plasma: v6.7.3
+# Plasma: 6.7.2
 Name: kwin-effects-glass
 Version: 20260620
 Release: 1.3%{?dist}
