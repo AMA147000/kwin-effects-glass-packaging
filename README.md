@@ -7,4 +7,5 @@ Note:
 Supported versions (aarch64 and x86_64):
 - Fedora 43
 - Fedora 44
+- Fedora 45
 - Fedora rawhide
