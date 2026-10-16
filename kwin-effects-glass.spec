@@ -40,9 +40,6 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %cmake
 %cmake_build
 
-%check
-# No tests available
-
 %install
 %cmake_install
 
