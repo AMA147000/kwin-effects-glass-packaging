@@ -33,8 +33,9 @@ if [ "$LATEST_TAG" != "$CURRENT_TAG" ]; then
     LATEST_TAG_NO_V=${LATEST_TAG#v}
     NEW_VER=${LATEST_TAG_NO_V%%-*}
 
-    # Get upstream release (suffix)
+    # Get upstream release (suffix) and replace hyphens with underscores
     NEW_UPSTREAM_REL=${LATEST_TAG#*-}
+    NEW_UPSTREAM_REL=${NEW_UPSTREAM_REL//-/_}
 
     # Create release string
     NEW_REL="$NEW_UPSTREAM_REL.plasma$LATEST_PLASMA%{?dist}"
@@ -84,8 +85,9 @@ if [ "$LATEST_TAG" != "$CURRENT_TAG" ]; then
 elif [ "$LATEST_PLASMA" != "$CURRENT_PLASMA" ]; then
     echo "Newer Plasma version available! Rebuilding..."
 
-    # Get upstream release (suffix)
+    # Get upstream release (suffix) and replace hyphens with underscores
     NEW_UPSTREAM_REL=${LATEST_TAG#*-}
+    NEW_UPSTREAM_REL=${NEW_UPSTREAM_REL//-/_}
 
     # Create release string
     NEW_REL="$NEW_UPSTREAM_REL.plasma$LATEST_PLASMA%{?dist}"
