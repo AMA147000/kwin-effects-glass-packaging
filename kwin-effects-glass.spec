@@ -1,13 +1,13 @@
-# Tag: 20260620-1
+# Tag: 20261016-6.8.0-support
 # Plasma: 6.8.0
 Name: kwin-effects-glass
-Version: 20260620
-Release: 1.8%{?dist}
+Version: 20261016
+Release: 6.8.0-support.plasma6.8.0%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
 URL: https://github.com/4v3ngR/kwin-effects-glass
-Source0: %{url}/archive/20260620-1.tar.gz
+Source0: %{url}/archive/20261016-6.8.0-support.tar.gz
 
 BuildRequires: extra-cmake-modules
 BuildRequires: gcc-c++
@@ -34,7 +34,7 @@ Requires: kwin
 Fork of the Plasma 6 blur effect with additional features (including force blur) and bug fixes.
 
 %prep
-%autosetup -n kwin-effects-glass-20260620-1
+%autosetup -n kwin-effects-glass-20261016-6.8.0-support
 
 %build
 %cmake
@@ -52,6 +52,55 @@ Fork of the Plasma 6 blur effect with additional features (including force blur)
 %{_libdir}/qt6/plugins/kwin/effects/plugins/*.so
 
 %changelog
+* Fri Oct 16 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 20261016-6.8.0-support
+- fix(blur): match device-rect rounding to avoid repaint artifacts
+- Fix: cannot cast to BlurRegion from RectF
+- Merge pull request #98 from PKMNPlatin/fix/blur-artifacts
+- Merge pull request #99 from Murazaki/feature/update-nix-version-to-main
+- update dynamic corners to include screen edges
+- Merge branch 'main' of github.com:4v3ngR/kwin-effects-glass
+- add extra tint exclusions
+- remove the legacy shaders support files, generation, and use
+- Merge pull request #101 from 4v3ngR/drop_legacy_shaders
+- update config layout as well as introduce automatic tint strength based on background color
+- Merge pull request #102 from 4v3ngR/autotint
+- inverse bell curve for automatic tint strength instead of linear
+- bump the nix file (wayland) to 20260627-1
+- fix(kcm): constrain settings height, pin tab bar, make tab content scrollable
+- Merge pull request #103 from SkyShadowHero/kcm-layout-fix
+- move to a pixel level auto tint calculation
+- a small optimisation for dynamic tint strength
+- add options to set dynamic tint range(min and max percentage)
+- add options to turn off refraction for different window types
+- draw the edge after applying the tint
+- fix tinting
+- chore(shader): export outline into its own glsl file, move uniforms to relevant files
+- chore(ui): renamed Refraction tab to "Refraction + Rim", added Rim section under refraction tab, moved Glow Color here
+- feat(rim): added edge highlight
+- fix(glow): render glow as a post-tint edge band so it is actually visible
+- feat(rim): add horizontal glow offset slider
+- fix(glow): full edge glow at center, corner-pair point lights when offset
+- feat(rim): adapt rim width to refraction
+- feat(rim): add specular scale slider
+- feat(rim): replace edge highlight with glow color mix
+- chore(rim): change rim defaults for a nice out-of-the-box look if enabled
+- Merge pull request #115 from PKMNPlatin/feature/rim
+- fix(config): default to blacklist matching mode for out-of-the-box blur
+- feat(config): tune default blur and noise strength for transparent glass aesthetic
+- docs: update Plasma 6 qdbus commands and troubleshooting guidance
+- Merge pull request #116 from sidneicjr28/fix/out-of-the-box-blur-defaults
+- Port shader and refraction optimisations from https://github.com/SuceV587 (https://github.com/SuceV587/NextKde)
+- update readme
+- feat(blur): decouple decoration- and content finetune from the dock finetune so they can be configured more precisely
+- fix(blur): disable blending during blur passes so translucent voids no longer blend into the result
+- Merge pull request #119 from PKMNPlatin/feature/blur-finetune
+- Merge branch 'main' into fix/void-blending
+- restore prePaintWindow to prevent flickering
+- Merge branch 'main' of github.com:4v3ngR/kwin-effects-glass
+- Merge pull request #120 from PKMNPlatin/fix/void-blending
+- fix: plugin build on KDE 6.8
+- Merge pull request #121 from PKMNPlatin/main
+
 * Sat Jun 20 2026 github-actions[bot] <github-actions[bot]@users.noreply.github.com> - 20260620-1
 - don't ignore all spectacle windows
 - Merge branch 'main' of github.com:4v3ngR/kwin-effects-glass
