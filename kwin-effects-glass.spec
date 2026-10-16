@@ -1,4 +1,4 @@
-# Tag: 20261016-6.8.0-support
+# Tag: none
 # Plasma: 6.8.0
 Name: kwin-effects-glass
 Version: 20261016-6.8.0-support

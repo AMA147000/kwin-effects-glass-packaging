@@ -29,14 +29,18 @@ echo "---"
 if [ "$LATEST_TAG" != "$CURRENT_TAG" ]; then
     echo "New tag found! Updating spec file..."
 
-    # Get version number (remove 'v' prefix)
-    NEW_VER=${LATEST_TAG#v}
+    # Get version number (remove 'v' prefix and suffix)
+    LATEST_TAG_NO_V=${LATEST_TAG#v}
+    NEW_VER=${LATEST_TAG_NO_V%%-*}
 
-    # Get release (using the plasma version used to build it)
-    NEW_REL="plasma$LATEST_PLASMA%{?dist}"
+    # Get upstream release (suffix)
+    NEW_UPSTREAM_REL=${LATEST_TAG#*-}
+
+    # Create release string
+    NEW_REL="$NEW_UPSTREAM_REL.plasma$LATEST_PLASMA%{?dist}"
 
     # Get changelog (tbh I don't really remember how the LOG parsing works, but it is working (._.;) )
-    HEADER="* $(date '+%a %b %d %Y') ${NAME} <${EMAIL}> - ${NEW_VER}"
+    HEADER="* $(date '+%a %b %d %Y') ${NAME} <${EMAIL}> - ${LATEST_TAG_NO_V}"
     LOG=$(curl -sL "https://api.github.com/repos/$UPSTREAM_REPO/compare/$CURRENT_TAG...$LATEST_TAG" | jq -r '.commits[].commit.message | split("\n")[0] | "- " + . | gsub("%"; "%%")')
 
     if [ -z "$LOG" ] || [ "$LOG" == "null" ]; then
@@ -60,7 +64,7 @@ if [ "$LATEST_TAG" != "$CURRENT_TAG" ]; then
     sed -i "s|^Source0:.*|Source0: %{url}/archive/$LATEST_TAG.tar.gz|" "$SPEC_FILE"
 
     # Replace the "%autosetup" line
-    sed -i "s|^%autosetup.*|%autosetup -n kwin-effects-glass-$NEW_VER|" "$SPEC_FILE"
+    sed -i "s|^%autosetup.*|%autosetup -n kwin-effects-glass-$LATEST_TAG_NO_V|" "$SPEC_FILE"
 
     # Add to the changelog
     sed -n '1,/^%changelog/p' "$SPEC_FILE" > spec.tmp
@@ -80,8 +84,11 @@ if [ "$LATEST_TAG" != "$CURRENT_TAG" ]; then
 elif [ "$LATEST_PLASMA" != "$CURRENT_PLASMA" ]; then
     echo "Newer Plasma version available! Rebuilding..."
 
-    # Get release (using the plasma version used to build it)
-    NEW_REL="plasma$LATEST_PLASMA%{?dist}"
+    # Get upstream release (suffix)
+    NEW_UPSTREAM_REL=${LATEST_TAG#*-}
+
+    # Create release string
+    NEW_REL="$NEW_UPSTREAM_REL.plasma$LATEST_PLASMA%{?dist}"
 
     # Replace the "# Plasma:" line
     sed -i "s|^# Plasma:.*|# Plasma: $LATEST_PLASMA|" "$SPEC_FILE"
