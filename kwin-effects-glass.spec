@@ -1,8 +1,8 @@
 # Tag: 20261016-6.8.0-support
-# Plasma: 6.8.1
+# Plasma: 6.8.2
 Name: kwin-effects-glass
 Version: 20261016
-Release: 6.8.0_support.plasma6.8.1%{?dist}
+Release: 6.8.0_support.plasma6.8.2%{?dist}
 Summary: Glass blur effect for KWin
 
 License: GPL-3.0-or-later
